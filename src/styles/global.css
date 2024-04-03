@@ -47,18 +47,74 @@ body {
     width: 100vw;
     height: auto;
     min-height: 100vh;
-    background: radial-gradient(circle, rgba(105, 107, 236, 0.5) 0%, rgba(38, 52, 99, 0.5) 100%);
-    color: #121212af;
+    background: radial-gradient(circle, #FFFFFF, #ECECEC);
+    color: #121212de;
     overflow-x: hidden;
     position: relative;
     scroll-behavior: smooth;
     transition: all 0.5s;
     margin: 0;
-    padding: 0;
+    padding: 1rem 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #app.dark {
-    background: radial-gradient(circle, rgba(105, 107, 236, 0.5) 0%, rgba(38, 52, 99, 0.5) 100%);
-    color: #f9f9f9c5;
+    background: radial-gradient(circle, #1E1E1E, #333333);
+    color: #f9f9f9e5;
+}
+
+#app-name {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #5433e6;
+    color: #FFFFFF;
+    border-radius: 50% 0 50% 0;
+    padding: 4.5rem 0 0 4rem;
+    width: 200px;
+    height: 200px;
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sun {
+    color: rgb(235, 235, 43);
+}
+
+.moon {
+    color: rgb(57, 57, 228);
+}
+
+.border-curve-top-left {
+    border-top-left-radius: 6px;
+}
+
+.border-curve-bottom-left {
+    border-bottom-left-radius: 6px;
+}
+
+.border-curve-top-right {
+    border-top-right-radius: 6px;
+}
+
+.border-curve-bottom-right {
+    border-bottom-right-radius: 6px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
 }
 

@@ -2,12 +2,19 @@ import '../../styles/login.css'
 
 import { Link } from 'react-router-dom'
 
+import LoginForm from '../../components/LoginForm'
+
 function TeacherLogin() {
     return (
         <>
-            <Link to="/">Student</Link>
-            <h1>Teacher Login</h1>
-            <Link to="/admin">Admin</Link>
+            <div className="pills">
+                <ul>
+                    <li><Link className="link" to="/">Student</Link></li>
+                    <li><Link className="link active" to="/teacher">Teacher</Link></li>
+                    <li><Link className="link" to="/admin">Admin</Link></li>
+                </ul>
+            </div>
+            <LoginForm />
         </>
     )
 }
