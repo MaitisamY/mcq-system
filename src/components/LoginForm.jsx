@@ -25,6 +25,15 @@ function LoginForm() {
         }))
     }
 
+    const handleFocusEvent = (e) => {
+        const { name, value } = e.target
+        const validate = validation({ name, value })
+        setErrors(prevState => ({
+            ...prevState,
+            [name]: validate
+        }))
+    }
+
     const handlePasswordToggle = () => {
         setIsShown(prevState => !prevState)
     }
@@ -32,7 +41,10 @@ function LoginForm() {
     const handleBlurEvent = (e) => {
         const { name, value } = e.target
         const validate = validation({ name, value })
-        return validate
+        setErrors(prevState => ({
+            ...prevState,
+            [name]: validate
+        }))
     }
 
     const handleSubmit = (e) => {
