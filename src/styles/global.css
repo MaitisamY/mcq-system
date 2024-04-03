@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "Mulish";
+    src: url('./fonts/Mulish-VariableFont_wght.ttf') format("truetype");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Mulish", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: transparent;
+}
+
+#app {
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    background: radial-gradient(circle, rgba(105, 107, 236, 0.5) 0%, rgba(38, 52, 99, 0.5) 100%);
+    color: #121212af;
+    overflow-x: hidden;
+    position: relative;
+    scroll-behavior: smooth;
+    transition: all 0.5s;
+    margin: 0;
+    padding: 0;
+}
+
+#app.dark {
+    background: radial-gradient(circle, rgba(105, 107, 236, 0.5) 0%, rgba(38, 52, 99, 0.5) 100%);
+    color: #f9f9f9c5;
+}
+
