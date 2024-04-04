@@ -19,6 +19,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Mulish", sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -75,7 +76,7 @@ body {
     scroll-behavior: smooth;
     transition: all 0.5s;
     margin: 0;
-    padding: 1rem 5px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,23 +88,9 @@ body {
     color: #f9f9f9e5;
 }
 
-#app-name {
-    position: absolute;
-    top: -50px;
-    left: -50px;
-    font-size: 1rem;
-    font-weight: bold;
-    background-color: #5433e6;
-    color: #FFFFFF;
-    border-radius: 50% 0 50% 0;
-    padding: 4.5rem 0 0 4rem;
-    width: 200px;
-    height: 200px;
-}
-
 #theme-toggle {
     position: absolute;
-    top: 1.5rem;
+    top: 1.2rem;
     right: 2rem;
     font-size: 1.5rem;
     cursor: pointer;
@@ -116,6 +103,22 @@ body {
 
 .moon {
     color: rgb(57, 57, 228);
+}
+
+.text-light {
+    color: #f9f9f9e5;
+}
+
+.text-dark {
+    color: #121212de;
+}
+
+.bg-light {
+    background-color: #f9f9f9e5;
+}
+
+.bg-dark {
+    background-color: #121212de;
 }
 
 .border-curve-top-left {

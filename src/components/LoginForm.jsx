@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BsEyeSlash, BsEye } from 'react-icons/bs'
 import { useNavigate } from 'react-router'
+import axios from 'axios'
 
 function LoginForm({ formType }) {
 
@@ -113,7 +114,7 @@ function LoginForm({ formType }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
+        
         const { fieldOne, fieldTwo } = formData;
     
         /* Validating and navigating without API calls right now */
@@ -128,21 +129,77 @@ function LoginForm({ formType }) {
             setServerError('All fields must be at least 3 characters');
         }
         else {
-            if (formType === 'student') {
-                navigate('/student/dashboard');
-            }
-            else if (formType === 'admin') {
-                navigate('/admin/dashboard');
-            }
-            else if (formType === 'teacher') {
-                navigate('/teacher/dashboard');
-            }
+            login()
             setServerError('');
         }
-
-        /* API calls will be added here */
-
     }
+
+    /* API calls will be added here */
+    async function login() {
+        const { fieldOne, fieldTwo } = formData;
+
+        if (formType === 'student') {
+
+            try {
+                const response = await axios.post('http://localhost:5000/student/login', {
+                username: fieldOne,
+                password: fieldTwo,
+            })  
+
+                if (response.data.status === 404) {
+                    setServerError(response.data.message);
+                }
+                else {
+                    navigate('/student/dashboard');
+                }
+            }
+            catch (error) {
+                setServerError('Server error, please try again later');
+            }
+            
+        }
+        else if (formType === 'admin') {
+            try {
+                const response = await axios.post('http://localhost:5000/admin/login', {
+                username: fieldOne,
+                password: fieldTwo,
+            })  
+
+                if (response.data.status === 404) {
+                    setServerError('Username or password is incorrect');
+                }
+                else {
+                    navigate('/student/dashboard');
+                }
+            }
+            catch (error) {
+                setServerError('Server error, please try again later');
+            }
+        }
+
+        else if (formType === 'teacher') {
+            try {
+                const response = await axios.post('http://localhost:5000/teacher/login', {
+                username: fieldOne,
+                password: fieldTwo,
+            })  
+
+                if (response.data.status === 404) {
+                    setServerError('Username or password is incorrect');
+                }
+                else {
+                    navigate('/student/dashboard');
+                }
+            }
+            catch (error) {
+                setServerError('Server error, please try again later');
+            }
+        }
+    }
+
+    useEffect(() => {
+        
+    })
 
     /* Rendering JSX */
 

@@ -1,3 +1,4 @@
+import '../../styles/dashboard.css'
 import Navbar from '../../components/Navbar'
 import Sidebar from '../../components/Sidebar'
 import Content from '../../components/Content'
@@ -5,13 +6,15 @@ import Content from '../../components/Content'
 function Dashboard() {
     return (
         <div className="dashboard-layout">
-            <div className="header">
-                <Navbar />
-            </div>
             <div className="sider">
-                <Sidebar />
+                <Sidebar 
+                    type="student"
+                />
             </div>
             <div className="content">
+                <div className="header">
+                    <Navbar />
+                </div>
                 <Content />
             </div>
         </div>
