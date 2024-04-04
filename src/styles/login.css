@@ -12,6 +12,7 @@
     border-radius: 6px;
     outline: 1px solid #bebebe !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
 }
 
 .pills ul {
@@ -31,13 +32,13 @@
     color: #bebebe;
     padding: 6px 30px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.5s;
     font-weight: 500;
     font-size: 14px;
 }
 
 .pills ul li .link.active {
-    background-color: #5433e6;
+    background-color: #2337e7;
     color: #fff;
     box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
@@ -49,12 +50,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     width: 100%;
     max-width: 338px;
     height: auto;
     margin: 1rem 0;
-    padding: 20px;
+    padding: 0;
     border-radius: 6px;
     outline: 1px solid #bebebe !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -65,9 +66,15 @@
     font-weight: 600;
     margin-bottom: 20px;
     width: 100%;
+    margin: 0;
+    padding: 15px 0;
     text-align: center;
-    color: #5433e6;
-    border-bottom: 1px solid #bebebe62;
+    border-bottom: 1px solid #bebebe;
+}
+
+.login-form p {
+    margin: 5px 0 0 0;
+    padding: 0;
 }
 
 .login-form form {
@@ -77,6 +84,7 @@
     align-items: flex-start;
     gap: 10px;
     width: 100%;
+    padding: 10px 20px 20px 20px;
 }
 
 .login-form form .input-group {
@@ -86,8 +94,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 5px;
-    margin-top: 10px;   
+    gap: 5px; 
 }
 
 .login-form form .input-group .password-toggle {
@@ -114,10 +121,15 @@
     background-color: transparent;
 }
 
+.login-form form input,
+.login-form form input::placeholder {
+    color: #868686;
+}
+
 .login-form form input:hover,
 .login-form form input:focus,
 .login-form form input:active {
-    outline: 1px solid #5433e6 !important;
+    outline: 2px solid #2337e7 !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -128,12 +140,16 @@
     border: none;
     outline: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #5433e6;
+    background-color: #2337e7;
     color: #fff;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 10px;
+}
+
+.login-form form button:hover {
+    background-color: #0616a0ce;
 }
 
 .login-form form p {

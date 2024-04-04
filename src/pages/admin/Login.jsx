@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 import LoginForm from '../../components/LoginForm'
 
 function AdminLogin() {
+
+    document.title = `Sign-in | Admin - MCQ's System`
+
     return (
         <>
             <div className="pills">
@@ -14,7 +17,7 @@ function AdminLogin() {
                     <li><Link className="link active" to="/admin">Admin</Link></li>
                 </ul>
             </div>
-            <LoginForm />
+            <LoginForm formType="admin" />
         </>
     )
 }

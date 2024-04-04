@@ -6,6 +6,9 @@ import { useTheme } from './hooks/ThemeProvider'
 import StudentLogin from './pages/student/Login'
 import AdminLogin from './pages/admin/Login'
 import TeacherLogin from './pages/teacher/Login'
+import StudentDashboard from './pages/student/Dashboard'
+import TeacherDashboard from './pages/teacher/Dashboard'
+import AdminDashboard from './pages/admin/Dashboard'
 
 import ThemeToggle from './components/ThemeToggle'
 
@@ -15,15 +18,15 @@ const App = () => {
 
     return (
         <div id="app" className={theme === 'dark' ? 'dark' : 'light'}>
-            <div id="app-name">
-                <h1>MCQ's System</h1>
-            </div>
             <ThemeToggle />
             <Router>
                 <Routes>
                     <Route path="/" element={<StudentLogin />} />
                     <Route path="/admin" element={<AdminLogin />} />
                     <Route path="/teacher" element={<TeacherLogin />} />
+                    <Route path="/student/dashboard" element={<StudentDashboard />} />
+                    <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
+                    <Route path="/admin/dashboard" element={<AdminDashboard />} />
                 </Routes>
             </Router>
         </div>
