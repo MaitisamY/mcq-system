@@ -150,7 +150,10 @@ function LoginForm({ formType }) {
                     setServerError(response.data.message);
                 }
                 else {
-                    navigate('/student/dashboard');
+                    localStorage.setItem('user', response.data.session);
+                    setTimeout(() => {
+                        navigate('/student/dashboard');
+                    }, 3000)
                 }
             }
             catch (error) {
