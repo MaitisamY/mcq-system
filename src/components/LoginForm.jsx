@@ -147,26 +147,28 @@ function LoginForm({ formType }) {
             }
 
             if (formType === 'student') {
-                response = await axios.post('http://localhost:5000/student/login', headers)
-                return response
+                response = await axios.post('http://localhost:5000/student/login', headers)  
             }
 
             if (formType === 'admin') {
-                response = await axios.post('http://localhost:5000/admin/login', headers)
-                return response
+                response = await axios.post('http://localhost:5000/admin/login', headers)   
             }
 
             if (formType === 'teacher') {
                 response = await axios.post('http://localhost:5000/teacher/login', headers)
-                return response
             }
 
             if (response.data.status !== 200) {
                 setServerError(response.data.message);
             }
             else {
+
+                /* Setting token and user in local storage */
+
+                const { username, email } = response.data
+
                 localStorage.setItem('token', response.data.session.token);
-                localStorage.setItem('user', response.data.session.username);
+                localStorage.setItem('user', response.data.username);
                 setTimeout(() => {
                     navigate('/student/dashboard');
                 }, 3000)

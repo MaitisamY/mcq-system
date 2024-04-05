@@ -24,7 +24,7 @@ app.use(session({
 }));
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the MCQ System!');
+    res.json({ hello: 'Welcome to the MCQ System!' });
 });
 
 app.post('/student/login', async (req, res) => {
@@ -44,7 +44,10 @@ app.post('/student/login', async (req, res) => {
     if (result.status === 200) {
         req.session.id = uuidv4();
         req.session.username = username;
-        res.json({ status: 200, message: 'Login successful', session: { token: req.session.id, username: req.session.username }, data: result.data });
+        res.json({ 
+            status: 200, message: 'Login successful', 
+            session: { token: req.session.id, username: req.session.username }, data: result.data 
+        });
     } else {
         res.json({ status: result.status, message: result.message });
     }
