@@ -4,6 +4,9 @@ import Sidebar from '../../components/Sidebar'
 import Content from '../../components/Content'
 
 function Dashboard() {
+
+    document.title = `Dashboard | Student - MCQ's System`
+
     return (
         <div className="dashboard-layout">
             <div className="sider">
