@@ -2,6 +2,7 @@ import './styles/global.css'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useTheme } from './hooks/ThemeProvider'
+import { UserProvider } from './hooks/UserProvider'
 
 import StudentLogin from './pages/student/Login'
 import AdminLogin from './pages/admin/Login'
@@ -20,14 +21,16 @@ const App = () => {
         <div id="app" className={theme === 'dark' ? 'dark' : 'light'}>
             <ThemeToggle />
             <Router>
-                <Routes>
-                    <Route path="/" element={<StudentLogin />} />
-                    <Route path="/admin" element={<AdminLogin />} />
-                    <Route path="/teacher" element={<TeacherLogin />} />
-                    <Route path="/student/dashboard" element={<StudentDashboard />} />
-                    <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
-                    <Route path="/admin/dashboard" element={<AdminDashboard />} />
-                </Routes>
+                <UserProvider>
+                    <Routes>
+                        <Route path="/" element={<StudentLogin />} />
+                        <Route path="/admin" element={<AdminLogin />} />
+                        <Route path="/teacher" element={<TeacherLogin />} />
+                        <Route path="/student/dashboard" element={<StudentDashboard />} />
+                        <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
+                        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                    </Routes>
+                </UserProvider>
             </Router>
         </div>
     )

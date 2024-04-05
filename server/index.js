@@ -19,7 +19,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 },
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }, 
     httpOnly: true
 }));
 
@@ -42,11 +42,13 @@ app.post('/student/login', async (req, res) => {
 
     // Check the status returned by getRow and respond accordingly
     if (result.status === 200) {
-        req.session.id = uuidv4();
-        req.session.username = username;
+        req.session.username = username; // Set session variables
+        req.session.token = uuidv4();
         res.json({ 
-            status: 200, message: 'Login successful', 
-            session: { token: req.session.id, username: req.session.username }, data: result.data 
+            status: 200, 
+            message: 'Login successful', 
+            session: { token: req.session.token, username: req.session.username }, 
+            data: result.data 
         });
     } else {
         res.json({ status: result.status, message: result.message });

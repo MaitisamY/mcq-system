@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
 import { BsEyeSlash, BsEye } from 'react-icons/bs'
 import { useNavigate } from 'react-router'
+import { useUser } from '../hooks/UserProvider'
 import axios from 'axios'
 
 function LoginForm({ formType }) {
 
     /* Logics and States */
+
+    const { dispatch } = useUser();
 
     const navigate = useNavigate()
 
@@ -120,13 +123,13 @@ function LoginForm({ formType }) {
         /* Validating and navigating without API calls right now */
 
         if (fieldOne.trim() === '' || fieldTwo.trim() === '') {
-            setServerError('All fields are required');
+            setServerError('Both fields are required');
         }
         else if (!fieldOne.match(/^[a-zA-Z]+$/)) {
             setServerError('Username must only contain letters');
         }
         else if (fieldOne.length < 3 || fieldTwo.length < 3) {
-            setServerError('All fields must be at least 3 characters');
+            setServerError('Both fields must be at least 3 characters');
         }
         else {
             login()
@@ -139,6 +142,7 @@ function LoginForm({ formType }) {
         const { fieldOne, fieldTwo } = formData;
 
         try {
+
             let response;
             const headers = {
                 username: fieldOne,
@@ -148,30 +152,36 @@ function LoginForm({ formType }) {
 
             if (formType === 'student') {
                 response = await axios.post('http://localhost:5000/student/login', headers)  
+                console.log(response.data);
             }
 
             if (formType === 'admin') {
                 response = await axios.post('http://localhost:5000/admin/login', headers)   
+                console.log(response.data);
             }
 
             if (formType === 'teacher') {
                 response = await axios.post('http://localhost:5000/teacher/login', headers)
+                console.log(response.data);
             }
 
             if (response.data.status !== 200) {
                 setServerError(response.data.message);
-            }
-            else {
-
-                /* Setting token and user in local storage */
-
-                const { username, email } = response.data
-
-                localStorage.setItem('token', response.data.session.token);
-                localStorage.setItem('user', response.data.username);
-                setTimeout(() => {
-                    navigate('/student/dashboard');
-                }, 3000)
+            } else {
+                const { token, username } = response.data.session;
+                dispatch('token', token)
+                    .then(() => dispatch('username', username))
+                    .then(() => {
+                        // Dispatch email if available directly under response.data
+                        if (response.data.email) {
+                            dispatch('email', response.data.email);
+                        }
+                    })
+                    .then(() => {
+                        navigate('/student/dashboard');
+                    })
+                    .then(() => dispatch('type', formType))
+                    .catch(err => console.log(err));
             }
         }
         catch (error) {
@@ -179,10 +189,6 @@ function LoginForm({ formType }) {
         }
             
     }
-
-    useEffect(() => {
-        
-    })
 
     /* Rendering JSX */
 

@@ -98,11 +98,11 @@ body {
 }
 
 .sun {
-    color: rgb(235, 235, 43);
+    color: #f9f9f9e5;
 }
 
 .moon {
-    color: rgb(57, 57, 228);
+    color: #121212de;
 }
 
 .text-light {
