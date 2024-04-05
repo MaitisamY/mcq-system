@@ -138,66 +138,44 @@ function LoginForm({ formType }) {
     async function login() {
         const { fieldOne, fieldTwo } = formData;
 
-        if (formType === 'student') {
-
-            try {
-                const response = await axios.post('http://localhost:5000/student/login', {
+        try {
+            let response;
+            const headers = {
                 username: fieldOne,
                 password: fieldTwo,
-            })  
+                type: formType
+            }
 
-                if (response.data.status === 404) {
-                    setServerError(response.data.message);
-                }
-                else {
-                    localStorage.setItem('user', response.data.session);
-                    setTimeout(() => {
-                        navigate('/student/dashboard');
-                    }, 3000)
-                }
+            if (formType === 'student') {
+                response = await axios.post('http://localhost:5000/student/login', headers)
+                return response
             }
-            catch (error) {
-                setServerError('Server error, please try again later');
+
+            if (formType === 'admin') {
+                response = await axios.post('http://localhost:5000/admin/login', headers)
+                return response
             }
+
+            if (formType === 'teacher') {
+                response = await axios.post('http://localhost:5000/teacher/login', headers)
+                return response
+            }
+
+            if (response.data.status !== 200) {
+                setServerError(response.data.message);
+            }
+            else {
+                localStorage.setItem('token', response.data.session.token);
+                localStorage.setItem('user', response.data.session.username);
+                setTimeout(() => {
+                    navigate('/student/dashboard');
+                }, 3000)
+            }
+        }
+        catch (error) {
+            setServerError('Server error, please try again later');
+        }
             
-        }
-        else if (formType === 'admin') {
-            try {
-                const response = await axios.post('http://localhost:5000/admin/login', {
-                username: fieldOne,
-                password: fieldTwo,
-            })  
-
-                if (response.data.status === 404) {
-                    setServerError('Username or password is incorrect');
-                }
-                else {
-                    navigate('/student/dashboard');
-                }
-            }
-            catch (error) {
-                setServerError('Server error, please try again later');
-            }
-        }
-
-        else if (formType === 'teacher') {
-            try {
-                const response = await axios.post('http://localhost:5000/teacher/login', {
-                username: fieldOne,
-                password: fieldTwo,
-            })  
-
-                if (response.data.status === 404) {
-                    setServerError('Username or password is incorrect');
-                }
-                else {
-                    navigate('/student/dashboard');
-                }
-            }
-            catch (error) {
-                setServerError('Server error, please try again later');
-            }
-        }
     }
 
     useEffect(() => {
