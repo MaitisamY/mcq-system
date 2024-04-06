@@ -1,12 +1,20 @@
 import '../../styles/login.css'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useUser } from '../../hooks/UserProvider'
 
 import LoginForm from '../../components/LoginForm'
 
 function TeacherLogin() {
 
+    const { user } = useUser()
+    const navigate = useNavigate()
+
     document.title = `Sign-in | Teacher - MCQ's System`
+
+    if(user.token !== '' && user.type === 'teacher') {
+        navigate('/teacher/dashboard')
+    }
 
     return (
         <>

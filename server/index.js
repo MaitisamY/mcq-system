@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     res.json({ hello: 'Welcome to the MCQ System!' });
 });
 
-app.post('/student/login', async (req, res) => {
+app.post('/user/login', async (req, res) => {
     const { username, password, type } = req.body;
 
     if (!username || !password) {

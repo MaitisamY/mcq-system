@@ -50,6 +50,7 @@
 
 .dashboard-layout .sider .head img {
     border-radius: 50px;
+    border: 1px solid #2337e7;
 }
 
 .dashboard-layout .sider .head span {
@@ -113,26 +114,130 @@
 .dashboard-layout .content .header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     width: 100%;
     height: fit-content;
     margin: 0;
-    padding: 20px 0;
+    padding: 10px 75px;
     background-color: transparent;
     transition: all 0.5s;
-    gap: 10px;
+    gap: 20px;
     border-bottom: 1px solid #5a58583f;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.dashboard-layout .content .header nav ul {
+.dashboard-layout .content .header .block {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
-    list-style-type: none;
     margin: 0;
     padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.dashboard-layout .content .header .bordered {
+    border: 1px solid #5a58583f;
+    border-radius: 50px;
+    padding: 5px 20px;
+}
+
+.dashboard-layout .content .header .non-bordered {
+    padding: 5px 0;
+}
+
+.dashboard-layout .content .header .block .menu {
+    position: absolute;
+    top: 135%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    width: 250px;
+    height: fit-content;
+    margin: 0;
+    padding: 0 0 10px 0;
+    border-radius: 6px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    background-color: #121212de;
+    color: #fff;
+    transition: all 0.2s;
+    overflow: hidden;
+    z-index: 10;
+    animation: fade-in 0.3s ease-in-out;
+}
+
+.dashboard-layout .content .header .block .menu ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.dashboard-layout .content .header .block .menu ul li {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 15px 10px;
+    border-bottom: 1px solid #5a58583f;
+    transition: all 0.2s;
+    font-size: 12px;
+}
+
+.dashboard-layout .content .header .block .menu ul li:hover {
+    background-color: #2337e705;
+    color: #f9f9f9e5;
+}
+
+.dashboard-layout .content .header .block .menu ul li.unread {
+    color: #6776ff;
+}
+
+.dashboard-layout .content .header .block .menu ul li .p {
+    font-size: 10px;
+    padding: 5px 10px;
+}
+
+.dashboard-layout .content .header .block .menu h3 {
+    margin: 0;
+    padding: 10px 0 0 0;
+    width: 100%;
+    text-align: center;
+}
+
+.dashboard-layout .content .header .block .menu button {
+    width: 90%;
+    margin: 0;
+    padding: 10px;
+    border-radius: 6px 6px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dashboard-layout .content .header .block .menu button.primary {
+    background-color: #2337e7;
+}
+
+.dashboard-layout .content .header .block .menu button.primary:hover {
+    background-color: #1027f1;
+}
+
+.dashboard-layout .content .header .block .menu button.danger {
+    background-color: #b31616;
+}
+
+.dashboard-layout .content .header .block .menu button.danger:hover {
+    background-color: #a81b1b;
 }

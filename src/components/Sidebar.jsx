@@ -12,7 +12,7 @@ function Sidebar({ type }) {
     return (
         <>
             <div className="head">
-                <img alt="logo" src="/fav.png" width="30" />
+                <img alt="logo" src="/logo.png" width="30" />
                 <Link 
                     className={`link ${theme === 'dark' ? 'text-light' : 'text-dark'}`} 
                     to={location.pathname}

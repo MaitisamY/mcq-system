@@ -65,6 +65,15 @@ body {
     }
 }
 
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 #app {
     width: 100vw;
     height: auto;
@@ -90,9 +99,9 @@ body {
 
 #theme-toggle {
     position: absolute;
-    top: 1.2rem;
+    top: 1rem;
     right: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     cursor: pointer;
     text-decoration: none;
 }

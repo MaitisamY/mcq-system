@@ -140,55 +140,52 @@ function LoginForm({ formType }) {
     /* API calls will be added here */
     async function login() {
         const { fieldOne, fieldTwo } = formData;
-
+    
         try {
-
-            let response;
             const headers = {
                 username: fieldOne,
                 password: fieldTwo,
                 type: formType
-            }
-
-            if (formType === 'student') {
-                response = await axios.post('http://localhost:5000/student/login', headers)  
-                console.log(response.data);
-            }
-
-            if (formType === 'admin') {
-                response = await axios.post('http://localhost:5000/admin/login', headers)   
-                console.log(response.data);
-            }
-
-            if (formType === 'teacher') {
-                response = await axios.post('http://localhost:5000/teacher/login', headers)
-                console.log(response.data);
-            }
-
+            };
+    
+            const response = await axios.post('http://localhost:5000/user/login', headers);
+            console.log(response.data);
+    
             if (response.data.status !== 200) {
                 setServerError(response.data.message);
             } else {
                 const { token, username } = response.data.session;
-                dispatch('token', token)
-                    .then(() => dispatch('username', username))
-                    .then(() => {
-                        // Dispatch email if available directly under response.data
-                        if (response.data.email) {
-                            dispatch('email', response.data.email);
-                        }
-                    })
-                    .then(() => {
-                        navigate('/student/dashboard');
-                    })
-                    .then(() => dispatch('type', formType))
-                    .catch(err => console.log(err));
+                dispatch('token', token);
+                dispatch('username', username);
+    
+                // Dispatch email if available directly under response.data
+                if (response.data.data && response.data.data[0].email) {
+                    dispatch('email', response.data.data[0].email);
+                    console.log(response.data.data[0].email);
+                }
+    
+                dispatch('type', formType);
+    
+                // Redirect to dashboard
+                if (formType === 'student') {
+                    navigate('/student/dashboard');
+                    console.log('redirected to student dashboard');
+                } else if (formType === 'admin') {
+                    navigate('/admin/dashboard');
+                    console.log('redirected to admin dashboard');
+                } else if (formType === 'teacher') {
+                    navigate('/teacher/dashboard');
+                    console.log('redirected to teacher dashboard');
+                } else {
+                    navigate('/');
+                }
             }
-        }
-        catch (error) {
+        } catch (error) {
+            console.error('Error during login:', error);
             setServerError('Server error, please try again later');
         }
-            
     }
+    
 
     /* Rendering JSX */
 

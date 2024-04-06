@@ -1,12 +1,20 @@
 import '../../styles/login.css'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useUser } from '../../hooks/UserProvider'
 
 import LoginForm from '../../components/LoginForm'
 
 function StudentLogin() {
 
+    const { user } = useUser()
+    const navigate = useNavigate()
+
     document.title = `Sign-in | Student - MCQ's System`
+
+    if(user.token !== '' && user.type === 'student') {
+        navigate('/student/dashboard')
+    }
 
     return (
         <>
