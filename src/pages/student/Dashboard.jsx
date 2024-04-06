@@ -1,7 +1,7 @@
 import '../../styles/dashboard.css'
 
 import { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useUser } from '../../hooks/UserProvider'
 
 import Sidebar from '../../components/Sidebar'
@@ -15,6 +15,8 @@ function Dashboard() {
     const [profileMenu, setProfileMenu] = useState(false)
 
     const navigate = useNavigate()
+    const location = useLocation();
+
     const notificationRef = useRef(null);
     const profileRef = useRef(null);
 
@@ -61,7 +63,8 @@ function Dashboard() {
         <div className="dashboard-layout">
             <div className="sider">
                 <Sidebar 
-                    type="student"
+                    type={user.type}
+                    location={location.pathname}
                 />
             </div>
             <div className="content">

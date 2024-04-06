@@ -1,4 +1,4 @@
-import { BsBell, BsPerson, BsChevronDown, BsChevronUp } from "react-icons/bs";
+import { BsBell, BsPerson } from "react-icons/bs";
 import { data } from '../data/dummy'
 
 function Header({ 
@@ -13,7 +13,8 @@ function Header({
 
     return (
         <div className="header">
-            <a ref={notificationRef} className="block non-bordered" onClick={onNotificationMenuToggle}><BsBell size={20} />
+            <a ref={notificationRef} className="block non-bordered" onClick={onNotificationMenuToggle}>
+                <BsBell size={20} />
                 {
                     notificationMenu && (
                         <div className="menu">
@@ -33,7 +34,7 @@ function Header({
                 }
             </a>
             <a ref={profileRef} className="block bordered" onClick={onProfileMenuToggle}>
-                <BsPerson /> {user.username}
+                <BsPerson size={20} /> {user.username}
                 {
                     profileMenu && (
                         <div className="menu">
