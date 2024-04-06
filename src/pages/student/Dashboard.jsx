@@ -32,7 +32,7 @@ function Dashboard() {
         setProfileMenu(!profileMenu)
     }
 
-    document.title = `Dashboard | Student - MCQ's System`
+    document.title = `${user.username.substring(0, 1).toUpperCase() + user.username.substring(1)} | Dashboard - MCQ's System`
 
     if(user.token === '' || user.type !== 'student') {
         navigate('/')

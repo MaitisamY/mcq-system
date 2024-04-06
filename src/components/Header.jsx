@@ -1,4 +1,4 @@
-import { BsBell, BsPerson } from "react-icons/bs";
+import { BsBell, BsPerson, BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { data } from '../data/dummy'
 
 function Header({ 
