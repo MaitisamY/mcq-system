@@ -157,7 +157,8 @@ a {
     right: 1rem;
     background-color: transparent;
     box-shadow: 0 0 6px -2px rgba(0, 0, 0, 0.2);
-    color: rgb(201, 35, 35);
+    color: rgb(255, 0, 0);
+    font-weight: 600;
     border-radius: 6%;
     padding: 1rem 2rem;
     width: fit-content;

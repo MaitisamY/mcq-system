@@ -35,7 +35,7 @@ app.post('/user/login', async (req, res) => {
     }
 
     if(username.length < 3 || password.length < 3) {
-        return res.json({ status: 400, message: 'All fields must be at least 3 characters' });
+        return res.json({ status: 400, message: 'Both fields must be of at least 3 characters' });
     }
     
     const result = await getRow(username, password, type);

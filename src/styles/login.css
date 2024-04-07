@@ -133,6 +133,14 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.login-form form .error,
+.login-form form .error:hover,
+.login-form form .error:focus,
+.login-form form .error:active {
+    outline: 2px solid rgb(255, 0, 0) !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 .login-form form button {
     width: 100%;
     padding: 10px 20px;
@@ -154,6 +162,6 @@
 
 .login-form form p {
     font-size: 14px;
-    color: rgb(201, 35, 35);
+    color: rgb(255, 0, 0);
 }
 

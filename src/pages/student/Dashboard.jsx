@@ -61,7 +61,7 @@ function Dashboard() {
     }, []);
 
     return (
-        <div className="dashboard-layout">
+        <div className="layout">
             <div className="sider">
                 <Sidebar 
                     type={user.type}

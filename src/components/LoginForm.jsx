@@ -58,7 +58,7 @@ function LoginForm({ formType }) {
         else if (name === 'fieldOne' && value.length < 3) {
             setErrors(prevState => ({
                 ...prevState,
-                errorOne: 'Username must be at least 3 characters'
+                errorOne: 'Username must be of at least 3 characters'
             }))
             return
         }
@@ -79,7 +79,7 @@ function LoginForm({ formType }) {
         else if (name === 'fieldTwo' && value.length < 3) {
             setErrors(prevState => ({
                 ...prevState,
-                errorTwo: 'Password must be at least 3 characters'
+                errorTwo: 'Password must be of at least 3 characters'
             }))
             return
         }
@@ -129,7 +129,7 @@ function LoginForm({ formType }) {
             setServerError('Username must only contain letters');
         }
         else if (fieldOne.length < 3 || fieldTwo.length < 3) {
-            setServerError('Both fields must be at least 3 characters');
+            setServerError('Both fields must be of at least 3 characters');
         }
         else {
             login()
@@ -213,6 +213,7 @@ function LoginForm({ formType }) {
                             onChange={handleFormData} 
                             value={formData.fieldOne} 
                             onBlur={handleBlurEvent}
+                            className={serverError && serverError.length > 0 ? 'error' : ''}
                         />
                     </div>
                     <p>{errors && errors.errorOne.length > 0 && errors.errorOne}</p>
@@ -226,6 +227,7 @@ function LoginForm({ formType }) {
                             onChange={handleFormData}
                             value={formData.fieldTwo} 
                             onBlur={handleBlurEvent}
+                            className={serverError && serverError.length > 0 ? 'error' : ''}
                         />
                         <span className="password-toggle">
                             {isShown ? <BsEyeSlash onClick={handlePasswordToggle} /> : <BsEye onClick={handlePasswordToggle} />}
