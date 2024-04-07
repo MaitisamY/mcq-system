@@ -11,6 +11,7 @@ import Header from '../../components/Header'
 function Dashboard() {
 
     const { user } = useUser()
+    console.log(user);
     const [notificationMenu, setNotificationMenu] = useState(false)
     const [profileMenu, setProfileMenu] = useState(false)
 

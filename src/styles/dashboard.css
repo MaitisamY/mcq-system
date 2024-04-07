@@ -93,6 +93,7 @@
 
 .dashboard-layout .sider ul li .link.active {
     background-color: #2337e7;
+    color: #f9f9f9e5;
 }
 
 .dashboard-layout .content {

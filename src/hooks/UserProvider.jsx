@@ -22,11 +22,6 @@ export const UserProvider = ({ children }) => {
         }
     }, []);
 
-    // Update local storage whenever user state changes
-    useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(user));
-    }, [user]);
-
     const dispatch = (name, value) => {
         setUser(prevState => ({ 
             ...prevState, 

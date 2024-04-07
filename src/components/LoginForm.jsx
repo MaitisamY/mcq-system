@@ -149,7 +149,6 @@ function LoginForm({ formType }) {
             };
     
             const response = await axios.post('http://localhost:5000/user/login', headers);
-            console.log(response.data);
     
             if (response.data.status !== 200) {
                 setServerError(response.data.message);
@@ -165,6 +164,15 @@ function LoginForm({ formType }) {
                 }
     
                 dispatch('type', formType);
+
+                const userData = {
+                    token: token,
+                    username: username,
+                    email: response.data.data[0].email,
+                    type: formType
+                }
+
+                localStorage.setItem('user', JSON.stringify(userData));
     
                 // Redirect to dashboard
                 if (formType === 'student') {
