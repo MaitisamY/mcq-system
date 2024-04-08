@@ -1,6 +1,8 @@
 import { useTheme } from '../hooks/ThemeProvider';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsBell, BsPerson } from 'react-icons/bs';
 import { data } from '../data/dummy';
+import axios from 'axios';
 
 function Header({ 
     user, 
@@ -14,11 +16,26 @@ function Header({
 
     const { theme } = useTheme();
 
+    const navigate = useNavigate();
+
     const getNotificationStatus = (status) => {
         if (status === true) {
             return theme === 'dark' ? 'text-light' : 'text-dark';
         } else {
             return 'unread';
+        }
+    }
+
+    const handleLogout = async () => {
+        localStorage.removeItem('user');
+        try {
+            const response = await axios.post('http://localhost:5000/user/logout');
+            
+            if (response.data.status === 200) {
+                window.location.href = '/';
+            }
+        } catch (error) {
+            console.error(error);
         }
     }
 
@@ -43,7 +60,7 @@ function Header({
                                     ))
                                 }
                             </ul>
-                            <button className="primary">View All</button>
+                            <Link className="btn primary" to={`/${user.type}/notifications`}>View All</Link>
                         </div>
                     )
                 }
@@ -54,7 +71,7 @@ function Header({
                     profileMenu && (
                         <div className={`menu ${theme === 'dark' ? 'bg-dark' : 'bg-light'}`}>
                             <h3>{user.email}</h3>
-                            <button className="danger">Logout</button>
+                            <button className="btn danger" onClick={handleLogout}>Logout</button>
                         </div>
                     )
                 }

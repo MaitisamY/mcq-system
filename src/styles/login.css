@@ -129,7 +129,7 @@
 .login-form form input:hover,
 .login-form form input:focus,
 .login-form form input:active {
-    outline: 2px solid #2337e7 !important;
+    outline: 2px solid #3746ce !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -157,7 +157,7 @@
 }
 
 .login-form form button:hover {
-    background-color: #0616a0ce;
+    background-color: #142af3e5;
 }
 
 .login-form form p {

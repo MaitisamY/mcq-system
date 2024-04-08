@@ -1,11 +1,11 @@
-import '../../styles/dashboard.css'
+import '../../styles/layout.css'
 
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useUser } from '../../hooks/UserProvider'
 
 import Sidebar from '../../components/Sidebar'
-import Content from '../../components/Content'
+import Content from '../../components/student/PreviousTestsContent'
 import Header from '../../components/Header'
 
 function PreviousTests() {
@@ -42,6 +42,11 @@ function PreviousTests() {
     }
 
     useEffect(() => {
+
+        if(user.token === '' || user.type !== 'student') {
+            navigate('/')
+        }
+
         const handleClickOutside = (event) => {
             if (
                 notificationRef.current &&
@@ -58,7 +63,7 @@ function PreviousTests() {
         return () => {
             window.removeEventListener('click', handleClickOutside);
         };
-    }, []);
+    }, [user]);
 
     return (
         <div className="layout">

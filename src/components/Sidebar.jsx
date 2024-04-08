@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '../hooks/ThemeProvider';
 import { Link } from 'react-router-dom';
 import { MENU } from '../data/dummy.js';
-import { BsHouse, BsBook, BsPerson, BsFilesAlt } from 'react-icons/bs';
-import { FaChartBar } from 'react-icons/fa';
+import { BsHouse, BsFiles, BsBook, BsPeople, BsFilesAlt, BsClipboardData } from 'react-icons/bs';
 
 function Sidebar({ type, location }) {
 
@@ -63,15 +62,15 @@ function renderIcon(label) {
         case 'Previous Tests':
         case 'Tests created':
         case 'Tests':
-            return <BsBook size={20} />;
+            return <BsFiles size={20} />;
         case 'Students':
-            return <FaChartBar size={20} />;
+            return <BsPeople size={20} />;
         case 'Teachers':
-            return <BsPerson size={20} />;
+            return <BsPeople size={20} />;
         case 'Subjects':
             return <BsFilesAlt size={20} />;
         case 'Results':
-            return <FaChartBar size={20} />;
+            return <BsClipboardData size={20} />;
         case 'Question bank':
             return <BsBook size={20} />;
         default:

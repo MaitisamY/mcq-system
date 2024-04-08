@@ -1,17 +1,19 @@
-import '../../styles/dashboard.css'
+import '../../styles/layout.css'
 
 import { useState, useEffect, useRef } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useUser } from '../../hooks/UserProvider'
+import { useTheme } from '../../hooks/ThemeProvider'
 
 import Sidebar from '../../components/Sidebar'
-import Content from '../../components/Content'
+import Content from '../../components/student/DashboardContent'
 import Header from '../../components/Header'
 
 function Dashboard() {
 
+    const { theme } = useTheme()
     const { user } = useUser()
-    console.log(user);
+    
     const [notificationMenu, setNotificationMenu] = useState(false)
     const [profileMenu, setProfileMenu] = useState(false)
 
@@ -37,11 +39,30 @@ function Dashboard() {
 
     document.title = `${user.username.substring(0, 1).toUpperCase() + user.username.substring(1)} | Dashboard - MCQ's System`
 
+    // if (user.token === '' || user.type !== 'student') {
+    //     return (
+    //         <div>
+    //             <h1>Unauthorized</h1>
+    //             <p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: '1rem' }}>
+    //                 Return to &nbsp;
+    //                 <Link className={`common-link ${theme === 'dark' ? 'text-light' : 'text-dark'}`} to="/">
+    //                     Home
+    //                 </Link>
+    //             </p>
+    //         </div>
+    //     )
+    // }
+
     if(user.token === '' || user.type !== 'student') {
         navigate('/')
     }
 
     useEffect(() => {
+
+        if(user.token === '' || user.type !== 'student') {
+            navigate('/')
+        }
+
         const handleClickOutside = (event) => {
             if (
                 notificationRef.current &&
@@ -58,7 +79,7 @@ function Dashboard() {
         return () => {
             window.removeEventListener('click', handleClickOutside);
         };
-    }, []);
+    }, [user])
 
     return (
         <div className="layout">

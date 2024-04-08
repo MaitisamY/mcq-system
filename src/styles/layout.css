@@ -78,7 +78,7 @@
     gap: 10px;
     width: 100%;
     margin: 0;
-    padding: 10px 5px;
+    padding: 15px 5px;
     font-size: 14px;
     text-decoration: none;
 }
@@ -215,7 +215,7 @@
     text-align: center;
 }
 
-.layout .content .header .block .menu button {
+.layout .content .header .block .menu .btn {
     width: 90%;
     margin: 0;
     padding: 10px;
@@ -223,20 +223,22 @@
     border: none;
     color: #fff;
     cursor: pointer;
+    text-align: center;
+    font-size: 13px;
 }
 
-.layout .content .header .block .menu button.primary {
+.layout .content .header .block .menu .btn.primary {
     background-color: #2337e7;
 }
 
-.layout .content .header .block .menu button.primary:hover {
+.layout .content .header .block .menu .btn.primary:hover {
     background-color: #1027f1;
 }
 
-.layout .content .header .block .menu button.danger {
+.layout .content .header .block .menu .btn.danger {
     background-color: #b31616;
 }
 
-.layout .content .header .block .menu button.danger:hover {
+.layout .content .header .block .menu .btn.danger:hover {
     background-color: #a81b1b;
 }

@@ -3,7 +3,7 @@ import React from 'react'
 function Content() {
     return (
         <div className="content-body">
-            <h1>Content</h1>
+            <h1>Previous Tests</h1>
         </div>
     )
 }

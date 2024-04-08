@@ -55,6 +55,12 @@ app.post('/user/login', async (req, res) => {
     }
 });
 
+app.post('/user/logout', (req, res) => {
+    req.session.destroy();
+    req.session = null;
+    res.json({ status: 200 });
+})
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
